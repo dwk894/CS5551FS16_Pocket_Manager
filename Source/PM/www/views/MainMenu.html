@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {
+        background-color: beige;
+    }
+    #systemName {
+        font-family: "Trebuchet MS", sans-serif;
+        color: firebrick;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration:underline;
+    }
+    #classTitle {
+        font-family: "Trebuchet MS", sans-serif;
+        color: blueviolet;
+        text-align: center;
+        font-size: 12pt;
+        font-weight: normal;
+    }
+    #logo {
+        display: block;
+        margin: auto;
+    }
+    #studentName {
+        font-family: "Trebuchet MS", sans-serif;
+    }
+    .button {
+        display: inline-block;
+        font-family: "Trebuchet MS", sans-serif;
+        font-size: 16px;
+        background-color: #f44336;
+        border-radius: 12px;
+        border: none;
+        text-align: center;
+        width: 400px;
+        padding: 9px 10px;
+        cursor: pointer;
+        transition: all 0.5s;
+    }
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    .button span:after {
+        content: '>>';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    .button:hover span {
+        padding-right: 25px;
+    }
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    .button2 {
+        display: inline-block;
+        font-family: "Trebuchet MS", sans-serif;
+        font-size: 16px;
+        background-color: #e7e7e7;
+        border-radius: 12px;
+        border: none;
+        text-align: center;
+        width: 200px;
+        padding: 9px 10px;
+        cursor: pointer;
+        transition: all 0.5s;
+    }
+    .button2 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    .button2 span:after {
+        content: '>>';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    .button2:hover span {
+        padding-right: 25px;
+    }
+    .button2:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    input[type = text] {
+        background-color: beige;
+        background-image: url('http://imgh.us/searchDW.png');
+        background-position: 2px 2px;
+        background-size: 15px 15px;
+        margin: 20px 0px 10px 0px;
+        background-repeat: no-repeat;
+        color: brown;
+        font-family: "Trebuchet MS", sans-serif;
+        font-size: 15px;
+        padding-left: 20px;
+        padding-right: 5px;
+        width: 600px;
+        border: 2px solid gray;
+        border-radius: 4px;
+    }
+	
+	#instruction {
+        font-family: "Trebuchet MS", sans-serif;
+        color: black;
+        font-size: 18px;
+        text-align: center;
+    }
+</style>
+
+<body>
+<p id = "classTitle">COMP-SCI 5551 (FS16) - Class Project</p>
+<img id = "logo", src = "http://imgh.us/logo2_23.png", alt = "<ERROR>", style = "width: 54px; height: 54px;" />
+<h1 id = "systemName">Pocket Manager</h1>
+<p><br></p>
+<table id = "studentName", style = "width: 300px", align = "center">
+    <tr>
+        <td align = "center">Team <b>1</b>:</td>
+        <td><i>Dayu Wang (59)</i></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><i>Chen Wang (58)</i></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><i>Yunlong Liu (25)</i></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><i>Joshua Neustrom (39)</i></td>
+    </tr>
+</table>
+<p><br></p>
+<p id = "instruction"><br>Welcome Dayu Wang!<button class = "button button2", type = "reset", style = "margin: 0px 0px 0px 16px;"><span>Logout</span></button></p>
+	<p id = "button", align = "center"><br><button type = "submit", class = "button"><span>View/Change Account Information</span></button></p>
+	<p id = "button", align = "center"><br><button type = "submit", class = "button"><span>Create Budget</span></button></p>
+	<p id = "button", align = "center"><br><button type = "submit", class = "button"><span>Query a Wanted Item</span></button></p>
+	<p id = "button", align = "center"><br><button type = "submit", class = "button"><span>Record a New Expense</span></button></p>
+	<p id = "button", align = "center"><br><button type = "submit", class = "button"><span>View History/Statistics</span></button></p>
+</body>
+</html>
