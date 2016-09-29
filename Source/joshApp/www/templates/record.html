@@ -1,0 +1,46 @@
+<!--
+Page to record an expense
+-->
+<ion-view view-title="Record an Expense">
+    <ion-content padding="true">
+        <form name="recForm">
+            <ion-list>
+               </br></br>
+               <!-- Category -->
+                <label class="item item-input">
+                    <span class="input-label">Category</span></br>
+                    <input name="category" type="text" placeholder="Where does this go in the budget?" ng-model="data.category" ng-class="{ 'has-errors' : recFrom.category.$invalid, 'no-errors' : recFrom.category.$valid}" required>
+                </label>
+                  <!-- Error Message -->
+                 <span class="error" ng-show="recForm.category.$touched && recForm.category.$error.required"><i class="ion-information-circled"></i> Category is Required!</span>
+                 <!-- Amount -->
+                <label class="item item-input">
+                    <span class="input-label">Amount</span></br>
+                    <input name="amount" type="number" placeholder="How much?" ng-model="data.amount" min="-10000" max="10000" required>
+                </label>
+                 <!-- Error Message -->
+                  <span class="error" ng-show="recForm.amount.$touched && recForm.amount.$error.required"><i class="ion-information-circled"></i> Amount is Required</span>
+                 <!-- Vendor -->
+                <label class="item item-input">
+                    <span class="input-label">Vendor</span></br>
+                    <input name="vendor" type="text" placeholder="Where did you buy it?" ng-model="data.vendor" required>
+                  <!-- Error Message -->         
+                    </label>
+                 <span class="error" ng-show="recForm.vendor.$touched && recForm.vendor.$error.required"><i class="ion-information-circled"></i> Vendor is Required!</span>
+                 <!--Date -->
+                <label class="item item-input">
+                    <span class="input-label">Date</span></br>
+                    <input name="date" type="date" displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" min="2015" max="2020-10-31" ng-model="data.date" value="{{date}}">
+                </label>
+              </ion-list>
+            <button class="button button-block button-calm" ng-disabled="recForm.$invalid" ng-click="recordExp(data)">Submit</button>
+    </form>
+          
+         <!-- Take a picture instead -->
+        <button class="button button-block button-calm" ng-click="goPhoto()">Take a Picture</button> 
+    </ion-content>
+</ion-view>
+<script>
+    $scope.date = $filter("data.date")(Date.now(), 'yyyy-MM-dd');
+</script>
+ 
