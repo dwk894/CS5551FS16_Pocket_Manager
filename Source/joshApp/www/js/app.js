@@ -20,6 +20,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+    .state('record', {
+      url: '/record',
+          templateUrl: 'templates/record.html',
+          controller: 'RecCtrl'
+        
+      
+    })
+      .state('confirm', {
+      url: '/confirm',
+          templateUrl: 'templates/confirm.html',
+          controller: 'ConfCtrl'
+        
+      
+    })
+     .state('next', {
+      url: '/next',
+          templateUrl: 'templates/next.html',
+          controller: 'NextCtrl'
+        
+      
+    })
 
   // setup an abstract state for the tabs directive
     .state('tab', {
@@ -30,18 +51,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.record', {
-      url: '/record',
-      views: {
-        'record': {
-          templateUrl: 'templates/record.html',
-          controller: 'RecCtrl'
-        }
-      }
-    })
+
  
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/record');
+  $urlRouterProvider.otherwise('/record');
 
 });

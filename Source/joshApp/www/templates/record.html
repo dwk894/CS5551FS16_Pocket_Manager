@@ -1,7 +1,9 @@
 <!--
 Page to record an expense
 -->
-<ion-view view-title="Record an Expense">
+
+<ion-view view-title="Record an Expense" name="record">
+   
     <ion-content padding="true">
         <form name="recForm">
             <ion-list>
@@ -30,17 +32,16 @@ Page to record an expense
                  <!--Date -->
                 <label class="item item-input">
                     <span class="input-label">Date</span></br>
-                    <input name="date" type="date" displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" min="2015" max="2020-10-31" ng-model="data.date" value="{{date}}">
+                    <input name="date" type="date" displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" min="2015" max="2020-10-31" ng-model="data.date" value={{date}}>
                 </label>
               </ion-list>
+
             <button class="button button-block button-calm" ng-disabled="recForm.$invalid" ng-click="recordExp(data)">Submit</button>
-    </form>
-          
+    </form> 
+           
          <!-- Take a picture instead -->
         <button class="button button-block button-calm" ng-click="goPhoto()">Take a Picture</button> 
     </ion-content>
 </ion-view>
-<script>
-    $scope.date = $filter("data.date")(Date.now(), 'yyyy-MM-dd');
-</script>
+
  
