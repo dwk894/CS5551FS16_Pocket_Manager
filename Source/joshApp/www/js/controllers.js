@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('RecCtrl', function($scope, $state, $filter) {
+.controller('RecCtrl', function($scope, $state, $filter, $ionicPopupS) {
 
        $scope.date = $filter("date")(Date.now(), "yyyy-MM-dd");
        
@@ -28,7 +28,7 @@ angular.module('starter.controllers', [])
     // No local storage :()
     var alertPopup = $ionicPopup.alert({
                   title: 'Error',
-                  template: 'No Local Storage on Browser'
+                  template: 'Error 1 - No Local Storage on Browser'
               });
   }
         // Go to the login page
@@ -37,43 +37,39 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ConfCtrl', function($scope, $state, $filter) {
+.controller('ConfCtrl', function($scope, $state, $filter, $http, $ionicPopup) {
     
     // Get the date from local storage and convert it to righjt format
      var stored_date = $filter("date")(localStorage.getItem('rec.date'), "yyyy-MM-dd");
      var formatted_date = new Date(stored_date);
 
-     // Send values back ot the form
-     $scope.date = formatted_date;
-    $scope.category =  localStorage.getItem('rec.category');
-     $scope.vendor =  localStorage.getItem('rec.vendor');
-      $scope.amount =  parseInt(localStorage.getItem('rec.amount'));
-       
-      $scope.confExp = function(category, amount, vendor, date){
+        // Send values back ot the form
+        $scope.date = formatted_date;
+        $scope.category =  localStorage.getItem('rec.category');
+        $scope.vendor =  localStorage.getItem('rec.vendor');
+        $scope.amount =  parseInt(localStorage.getItem('rec.amount'));
+        $scope.confExp = function(category, amount, vendor, date){
   
-    // Make sure they can use local storage before taking the data
-    if (typeof(Storage) !== "undefined") {
+         // Make sure they can use local storage before taking the data
 
-      //Create a new user on Parse
-      localStorage.setItem('rec.category', category);
-      localStorage.setItem('rec.amount', amount);
-      localStorage.setItem('rec.vendor', vendor);
-
-      // See if the user gave us a date, if not use today
-      if(date==null)
-      {
-          date = new Date();          
-      }
-      localStorage.setItem('rec.date', date);
-      
-     
-  } else {
-    // No local storage :()
-    var alertPopup = $ionicPopup.alert({
-                  title: 'Error',
-                  template: 'No Local Storage on Browser'
+         var data = { 'Category': category,
+		'Amount': amount,
+		'Vendor': vendor,
+		'Date': date
+	  }
+      var url = 'https://api.mlab.com/api/1/databases/pocket_manager/collections/pocket_manager/?apiKey=Omq-HhXv0WUnDNEVey9TQdBhsEEFDtHo';
+      $http.post(url, data)
+      .success(function (data, status, headers, config) {
+            var alertPopup2 = $ionicPopup.alert({
+                  title: 'Victory',
+                  template: 'You successfully added an expense'
               });
-  }
+				  
+	  }).error(function (data, status, headers, config) { 
+            var alertPopup3 = $ionicPopup.alert({
+                  title: 'Error',
+                  template: 'Error 2 - Could not connect to database to add the expense'
+              }); });
   
         // Go to the login page
       $state.go('next'); 
@@ -87,8 +83,5 @@ angular.module('starter.controllers', [])
         // Go to the Receipt Page page
       $state.go('record'); 
   }
-  
-  
-
 });
 
