@@ -1,0 +1,39 @@
+/* Empty. Add your own CSS if you like */
+#wishitem{
+    width: 80%;
+	padding: 15px 0 15px 20px;
+	font-size: 16px;
+    border: 0 none;
+	height: 50px;
+	margin-right: 0;
+	color: white;
+	outline: none;
+	background:grey;
+	float: left;
+	box-sizing: border-box;
+	transition: all 0.15s;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
+}
+#wishitem:focus{
+	background: rgb(64, 151, 119);
+}
+#search_button {
+	border: 0 none;
+	background:grey;
+	width: 20%; 
+	float: left;
+	padding: 0;
+	text-align: center;
+	height: 50px;
+	cursor: pointer;
+	outline:none;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
+}
+#search_button:focus {
+	background: rgb(64, 151, 119);
