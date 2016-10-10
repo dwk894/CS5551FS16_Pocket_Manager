@@ -1,0 +1,21 @@
+#classTitle, #authors{
+  color: rgb(148, 39, 36);
+  font-size: 15px;
+  text-align: center;
+  padding-bottom: 9px;
+}
+
+.mainBoard {
+  background-color: beige;
+}
+
+#logo {
+  height: 69px;
+  width: 128px;
+  display: block;
+  margin: auto;
+}
+
+#mainTitle {
+  text-align: center;
+}
