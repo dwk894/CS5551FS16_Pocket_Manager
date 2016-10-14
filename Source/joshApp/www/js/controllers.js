@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('RecCtrl', function($scope, $state, $filter, $ionicPopupS) {
+.controller('RecCtrl', function($scope, $state, $filter, $ionicPopup) {
 
        $scope.date = $filter("date")(Date.now(), "yyyy-MM-dd");
        

@@ -1,20 +1,22 @@
 describe('RecCtrl', function() {
-	var scope;
+	var $controller;
 	
 	beforeEach(angular.mock.module('starter'));
-	beforeEach(angular.mock.inject(function($rootScope, $controller) {
-		scope = $rootScope.$new();
-		$controller('RecCtrl', {$scope: scope});
+	beforeEach(angular.mock.inject(function(_$controller_) {
+		$controller = _$controller_;
+		
 	}));
-
-	it("Checks for null values in expense submission", function () {
-
-		// Test basic jasmine to make sure it is working
+	describe('recExpense', function() {
+	it("Checks for invalid amount", function () {
+        $scope = {};
+         controller = $controller('RecCtrl', {$scope: scope});
+		
+        // Test basic jasmine to make sure it is working
 		var a = null;
 		expect(a).toBeNull();
 
-		// Expense function 
-		func = scope.recExpense();
+		// Expense function  
+		var func = $scope.recExpense(null, null, null, null);
 
 		// Category
 		var cat = localStorage.getItem('rec.category');
@@ -31,5 +33,6 @@ describe('RecCtrl', function() {
 		// Date
 		var ven = localStorage.getItem('rec.date');
 		expect(date).not.BeNull();
+		});
 	});
 });
