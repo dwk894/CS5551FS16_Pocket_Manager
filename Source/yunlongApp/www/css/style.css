@@ -37,3 +37,15 @@
 }
 #search_button:focus {
 	background: rgb(64, 151, 119);
+}
+
+#tx{
+  
+  color: coral;
+}
+
+#ti{
+  
+  color: red;
+  
+}
