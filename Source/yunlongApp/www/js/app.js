@@ -7,7 +7,7 @@ angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
+    if (window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -22,3 +22,22 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+$scope.searchitem = function(){
+
+//function searchitem(){
+  var text =$("#wishitem").val().replace(/\s/g,"%20");
+
+  $.getJSON(
+    "http://open.api.ebay.com/shopping?callname=FindItems&requestencoding=NV&responseencoding=JSON&appid=yunlongl-s-PRD-a9f3034fd-7c6e9430&siteid=0&SortOrderType=BestMatch&QueryKeywords="+ text +"&version=713",
+    function(result){
+      var intro = result["Item"]
+      $.each(
+      intro,
+        function(key,value){
+          $("#result").replaceWith("<div id = 'result'><p class = 'smalltitle'>" + text + "</p><p class = 'category'>"+ intro[key]["PrimaryCategoryName"] +"</p><img src="+ intro[key]["GalleryURL"] +"><P class='price'>"+ intro[key]["ConvertedCurrentPrice"]["value"] +"</p>")
+        }      
+      );      
+    }    
+  );  
+}
