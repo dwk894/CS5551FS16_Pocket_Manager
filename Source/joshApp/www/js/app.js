@@ -1,6 +1,6 @@
 // Ionic Starter App
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,6 +38,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/next',
           templateUrl: 'templates/next.html',
           controller: 'NextCtrl'
+        
+      
+    })
+  
+   .state('photo', {
+      url: '/photo',
+          templateUrl: 'templates/photo.html',
+          controller: 'PhotoCtrl'
         
       
     })

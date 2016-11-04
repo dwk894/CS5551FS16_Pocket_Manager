@@ -18,7 +18,7 @@ Page to record an expense
                  <!-- Amount -->
                 <label class="item item-input">
                     <span class="input-label">Amount</span></br>
-                    <input name="amount" type="number" placeholder="How much?" ng-model="amount" min="-10000" max="10000" required value=>
+                    <input name="amount" type="number" placeholder="How much?" step="0.01" ng-model="amount" min="-10000.01" max="10000.01"  required>
                 </label>
                  <!-- Error Message -->
                   <span class="error" ng-show="conForm.amount.$touched && conForm.amount.$error.required"><i class="ion-information-circled"></i> Amount is Required</span>
@@ -36,6 +36,9 @@ Page to record an expense
                 </label>
               </ion-list>
             <button class="button button-block button-calm" ng-disabled="conForm.$invalid" ng-click="confExp(category, amount, vendor, date)">Submit</button>
+    
     </form> 
+    
     </ion-content>
 </ion-view>
+
