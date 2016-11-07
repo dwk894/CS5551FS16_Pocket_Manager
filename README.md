@@ -13,6 +13,7 @@ Our app helps student manage a budget like a professional before they even gradu
 
 Increment 1 Wiki- https://github.com/dwk894/CS5551FS16_Pocket_Manager/wiki/Increment-1
 Increment 2 Wiki - https://github.com/dwk894/CS5551FS16_Pocket_Manager/wiki/Increment-2
+Increment 3 Wiki - https://github.com/dwk894/CS5551FS16_Pocket_Manager/wiki/Increment-3
 Documentation-https://github.com/dwk894/CS5551FS16_Pocket_Manager/tree/master/Documentation 
 Source Code - https://github.com/dwk894/CS5551FS16_Pocket_Manager/tree/master/Source
 
