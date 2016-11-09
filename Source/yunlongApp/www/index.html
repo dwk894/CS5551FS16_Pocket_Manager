@@ -22,7 +22,8 @@
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-
+<!--    link with jquery library-->
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
@@ -42,9 +43,10 @@
       </ion-header-bar>
       <ion-content>
           <div>
-          <input type="text" id="wishitem" name="wishitem" placeholder="type in your wish item" >
-          <input type="button" id="search_button" name="search_button" onclick="searchitem" value="search"> 
+          <input type="text" id="wishitem" name="wishitem"  placeholder="type in your wish item" >
+          <input type="button" id="search_button" name="search_button" onclick="searchitem();" value="search"> 
           </div>
+        <div id = "e"><p class = "noErr"><br></p></div>
         <div>
           <center>
           <b ID="ti" NAME="ti">SMALL TIPS</b>
@@ -52,6 +54,10 @@
         <p name="tx" id="tx">    The key to good money management is separating needs from wants. If you aren’t sure if an item is a need or a want, do without it for a period of time. If after that time you truly can’t live without it, it may be a need. However, even the essentials like shelter or transportation involve a want vs. need calculation. For instance, you may have evaluated all possible transportation methods for you to get to work and determined that you need to purchase a car. Fine, but which car you buy is another choice you make.</p>
         </div>
         <div id = "result"></div>
+        <div id = "suggestion">
+          <div id="d" ></div>
+        <div id="s" ></div>
+        </div>
       </ion-content>
     </ion-pane>
   </body>

@@ -1,5 +1,6 @@
 {
     "jscodehints.detectedExclusions": [
-        "/Users/yunlongliu/Desktop/yunlongApp/platforms/ios/cordova/lib/plugman/Plugman.js"
+        "/Users/yunlongliu/Desktop/yunlongApp/platforms/ios/cordova/lib/plugman/Plugman.js",
+        "/Users/yunlongliu/Desktop/yunlongApp/www/lib/ionic/js/ionic.min.js"
     ]
 }
