@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title></title> <!-- No title for Android app. -->
+        <link rel = "manifest" href = "manifest.json">
+        <link href = "lib/ionic/css/ionic.css" rel = "stylesheet">
+        <link href = "css/style.css" rel = "stylesheet">
+        <!-- jQuery -->
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Ionic/AngularJS -->
+        <script src = "lib/ionic/js/ionic.bundle.js"></script>
+        <!-- Cordova script (this will be an Error 404 during development.) -->
+        <script src = "cordova.js"></script>
+        <!-- Main engine of the Pocket Manager system -->
+        <script src = "js/app.js"></script>
+    </head>
+
+    <body ng-app = "starter">
+        <ion-pane>
+            <ion-side-menus>
+                <ion-side-menu side = "left" id = "sideMenu">
+                    <div class = "list">
+                        <div class = "button-bar" style = "width: calc(100% - 10px); margin-left: 5px;">
+                            <a class = "button icon-left ion-log-in button-assertive">Sign In</a>
+                            <a class = "button icon-left ion-android-create button-balanced" href = "html/registration.html" id = "sideItem_1">Sign Up</a>
+                        </div>
+                        <a class = "item item-icon-left" href = "#" id = "sideItem_2">
+                            <i class = "icon ion-compose"></i>
+                            Create Monthly Budgets
+                        </a>
+                        <a class = "item item-icon-left" href = "#" id = "sideItem_3">
+                            <i class = "icon ion-android-search"></i>
+                            Search Wanted Items
+                        </a>
+                        <a class = "item item-icon-left" href = "#" id = "sideItem_4">
+                            <i class = "icon ion-card"></i>
+                            Record Expenses
+                        </a>
+                        <a class = "item item-icon-left" href = "#" id = "sideItem_5">
+                            <i class = "icon ion-clipboard"></i>
+                            Expense History
+                        </a>
+                        <a class = "item item-icon-left" href = "#" id = "sideItem_6">
+                            <i class = "icon ion-arrow-graph-up-right"></i>
+                            Expense Report
+                        </a>
+                        <a class = "item item-icon-left" href = "#" id = "sideItem_7">
+                            <i id = "profile" class = "icon ion-android-settings"></i>
+                            Account Profile
+                        </a>
+                    </div>
+                </ion-side-menu>
+                <ion-side-menu-content id = "homePage">
+                    <div class = "bar bar-header bar-calm">
+                        <button menu-toggle = "left" class = "button button-icon icon ion-navicon"> Menu</button>
+                    </div>
+                    <p id = "classTitle" align = "center">COMP-SCI 5551 (FS16) - Advanced Software Engineering</p>
+                    <img src = "http://imgh.us/Pocket_Manager_Logo_1.png" id = "mainLogo">
+                    <table id = "teamMemebers">
+                        <tr>
+                            <td style = "padding-top: 30px; padding-right: 10px;">Project Team 1:</td>
+                            <td><div class = "italics" style = "padding-bottom: 3px;">Joshua <b>Neustrom</b> (39)</div></td>
+                        </tr>
+                        <tr>
+                            <td></td><td><div class = "italics" style = "padding-bottom: 3px;">Yunlong <b>Liu</b> (25)</div></td>
+                        </tr>
+                        <tr>
+                            <td></td><td><div class = "italics" style = "padding-bottom: 3px;">Chen <b>Wang</b> (58)</div></td>
+                        </tr>
+                        <tr>
+                            <td></td><td><div class = "italics">Dayu <b>Wang</b> (59)</div></td>
+                        </tr>
+                    </table>
+                </ion-side-menu-content>
+            </ion-side-menus>
+        </ion-pane>
+    </body>
+</html>

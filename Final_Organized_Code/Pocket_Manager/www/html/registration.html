@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title></title> <!-- No title for Android app. -->
+        <link rel = "manifest" href = "manifest.json">
+        <link href = "../lib/ionic/css/ionic.css" rel = "stylesheet">
+        <link href = "../css/style.css" rel = "stylesheet">
+        <!-- jQuery -->
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Ionic/AngularJS -->
+        <script src = "../lib/ionic/js/ionic.bundle.js"></script>
+        <!-- Cordova script (this will be an Error 404 during development.) -->
+        <script src = "../cordova.js"></script>
+        <!-- Main engine of the Pocket Manager system -->
+        <script src = "../js/app.js"></script>
+    </head>
+    
+    <body ng-app = 'register'>
+        <ion-pane>
+            <ion-side-menus>
+                <ion-side-menu side = 'left' id = 'sideMenu'>
+                    <div class = 'list'>
+                        <div class = "button-bar" style = "width: calc(100% - 10px); margin-left: 5px;">
+                            <a class = "button icon-left ion-log-in button-assertive">Sign In</a>
+                            <a class = "button icon-left ion-android-create button-balanced" id = "sideItem_1" style = 'opacity: 0.5;'>Sign Up</a>
+                        </div>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_2'>
+                            <i class = 'icon ion-compose'></i>
+                            Create Monthly Budgets
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_3'>
+                            <i class = 'icon ion-android-search'></i>
+                            Search Wanted Items
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_4'>
+                            <i class = 'icon ion-card'></i>
+                            Record Expenses
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_5'>
+                            <i class = 'icon ion-clipboard'></i>
+                            Expense History
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_6'>
+                            <i class = 'icon ion-arrow-graph-up-right'></i>
+                            Expense Report
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_7'>
+                            <i id = 'profile' class = 'icon ion-android-settings'></i>
+                            Account Profile
+                        </a>
+                    </div>
+                </ion-side-menu>
+                <ion-side-menu-content id = 'homePage'>
+                    <div class = 'bar bar-header bar-calm'>
+                        <button menu-toggle = 'left' class = 'button button-icon icon ion-navicon'> Menu</button>
+                    </div>
+                    <p align = 'center' class = 'pageTitle'>Create New User</p>
+                    <div class = 'row'>
+                        <div class = 'col col-75'>
+                            <input id = 'userName' type = 'text' placeholder = 'Username (2 to 10 characters, letters and numbers only)' class = 'fullWidth' style = 'border:none; border-bottom: 2px solid darkred; color: darkred;'>
+                            <p id = 'errorNote_userName'></p>
+                            <input id = 'password' type = 'password' placeholder = 'Password (4 to 8 characters, letters and numbers only)' class = 'fullWidth' style = 'border:none; border-bottom: 2px solid darkred; color: darkred;'>
+                            <p id = 'errorNote_password'></p>
+                            <input id = 'password_2' type = 'password' placeholder = 'Re-enter the password.' class = 'fullWidth' style = 'border:none; border-bottom: 2px solid darkred; color: darkred;'>
+                            <p id = 'errorNote_password_2'></p>
+                            <input id = 'hint' type = 'text' placeholder = 'Password hint (using to reset your password)' class = 'fullWidth' style = 'border:none; border-bottom: 2px solid darkred'>
+                            <p id = 'errorNote_password_3'></p>
+                            <input id = 'email' type = 'email' placeholder = 'Email Address' class = 'fullWidth' style = 'border:none; border-bottom: 2px solid darkred; color: darkred'>
+                            <p id = 'errorNote_email'></p>
+                            <input id = 'fullName' type = 'text' placeholder = 'Full Name' class = 'fullWidth' style = 'border:none; border-bottom: 2px solid green; color: green;'>
+                            <p id = 'errorNote_name'></p>
+                            <div style = 'border-bottom: 2px solid green; width: 100%; color: green; padding-top: 12px;'>
+                                <a style = 'padding-right: 51%; color: green;'>Gender</a>
+                                <input type = 'radio' name = 'gender' value = 'female' checked = 'true'> Female
+                                <a style = 'padding-right: 10%;'></a>
+                                <input type = 'radio' name = 'gender' value = 'male'> Male
+                            </div>
+                            <div style = 'border-bottom: 2px solid green; width: 100%; color: green; padding-top: 22px;'>
+                                <a style = 'padding-right: 10%; color: green;'>Current Degree</a>
+                                <input type = 'radio' name = 'degree' value = 'undergraduate' checked = 'true'> Undergraduate
+                                <a style = 'padding-right: 10%;'></a>
+                                <input type = 'radio' name = 'degree' value = 'master'> Master
+                                <a style = 'padding-right: 10%;'></a>
+                                <input type = 'radio' name = 'degree' value = 'doctor'> Doctorate
+                            </div>
+                            <input id = 'major' type = 'text' placeholder = 'Major of Study' class = 'fullWidth' style = 'margin-top: 9px; border:none; border-bottom: 2px solid green; color: green;'>
+                            <p id = 'errorNote_major'></p>
+                            <input id = 'income' type = 'number' placeholder = 'Monthly NET income (in USD) - rent, loan not included' class = 'fullWidth' style = 'border:none; border-bottom: 2px solid red; color: red;'>
+                            <p id = 'errorIncome'></p>
+                        </div>
+                        <div class = 'col'>
+                            <div id = 'profilePicture'>
+                                <i id = 'defaultPicture' class = 'ion-ios-camera' style = 'color: darkred;'></i>
+                                <button id = 'takePhoto' class = 'button button-small button-calm' style = 'font-size: 12px; margin-bottom: 5px; width: calc(100% - 10px);'>Take a Photo</button>
+                                <button id = 'choosePhoto' class = 'button button-small button-energized' style = 'font-size: 12px; margin-bottom: 5px; width: calc(100% - 10px);'>Choose from Gallery</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button id = 'registerSubmit' class = 'button icon-left ion-android-create button-calm' style = 'position: fixed; bottom: 20px; width: calc(50% - 20px); left: 15px;'>Submit</button>
+                    <button class = 'button icon-left ion-home button-assertive' style = 'position: fixed; bottom: 20px; left: calc(50% + 5px); width: calc(50% - 20px);'>Go to Home Page</button>
+                </ion-side-menu-content>
+            </ion-side-menus>
+        </ion-pane>
+    </body>
+</html>
