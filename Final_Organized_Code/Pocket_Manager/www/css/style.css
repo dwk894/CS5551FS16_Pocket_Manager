@@ -1,0 +1,91 @@
+#homePage {
+    background-color: azure;
+}
+
+#classTitle {
+    color: darkred;
+    font-size: 16px;
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+i {
+    color: blueviolet;
+}
+
+#sideMenu, #sideItem_2, #sideItem_3, #sideItem_4, #sideItem_5, #sideItem_6 {
+    background-color: azure;
+    color: blueviolet;
+}
+
+#sideItem_7, #profile {
+    background-color: azure;
+    color: red;
+}
+
+#mainLogo {
+    height: 90px;
+    width: auto;
+    color: darkred;
+    display: block;
+    margin: auto;
+}
+
+#teamMemebers {
+    margin: 0 auto;
+    color: darkred;
+    font-size: 16px;
+}
+
+.italics {
+    font-style: italic;
+}
+
+.pageTitle {
+    padding-top: 60px;
+    padding-bottom: 30px;
+    font-size: 20px;
+    color: darkred;
+    text-decoration: underline;
+}
+
+.fullWidth {
+    width: 100%;
+    background-color: azure;
+}
+
+#profilePicture {
+    width: 100%;
+    height: auto;
+    border: 1px dashed gainsboro;
+    font-size: 100px;
+    text-align: center;
+}
+
+#errorNote_userName, #errorNote_password, #errorNote_password_2, #errorNote_password_3, #errorNote_email, #errorNote_name, #errorNote_major, #errorIncome {
+    color: red;
+    font-size: 10px;
+}
+
+#welcome {
+    font-size: 1em;
+    text-align: center;
+    color: red;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    text-decoration: underline;
+}
+
+#profileImage {
+    border: 1px dashed gray;
+    display: block;
+    margin: auto;
+}
+
+#loginStatus {
+    font-size: 1em;
+    text-align: center;
+    color: darkred;
+    padding-top: 1em;
+    padding-bottom: 3em;
+}
