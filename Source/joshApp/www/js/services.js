@@ -77,11 +77,13 @@ angular.module('starter.services', [])
                             
                             // Our response
                             var text = res.responses[0].textAnnotations[0].description;
+
+                            // Filter out common Google Vision error of placing commas in dollar amounts
+                            text = text.replace(/,/g,".");
                             console.log(text);
 
                             // Get date
                             var date;
-                            console.log(text);
 
                             // Parse the date in with two and one digit day and month
                             var twotwo = text.match(/\d{2}\/\d{2}\/\d{4}/);
@@ -131,6 +133,57 @@ angular.module('starter.services', [])
                             vendor = vendor.replace('WELCOME TO','').trim();
                             console.log(vendor);
 
+                             // Get total price
+                            var regexFloat = /[+-]?\d+(\.\d+)?/g;
+
+                            // All possible totals
+                            var totalSet = [];
+                            // Final total read from receipt
+                            var total;
+
+                            // Counter for number of results
+                            var counter = 0;
+
+                            // Get line before word Total
+                            var totalBefore = text.match(/((.*\n){1})TOTAL/i);
+                         
+                            if(totalBefore != null){
+                                totalSet[counter] = totalBefore[0].match(regexFloat)[0];
+                                console.log(totalSet[counter]);
+                                counter++
+                            }
+                            // Get line after word Total:
+                            var totalAfterSemi = text.match(/TOTAL:((\n.*){1})/i);
+                        
+                           if(totalAfter != null){
+                                totalSet[counter] = totalAfterSemi[0].match(regexFloat)[0];
+                                console.log(totalSet[counter]);
+                                counter++;
+                            }
+
+                            // Get line after Total with no semicolon
+                            var totalAfter = text.match(/TOTAL((\n.*){1})/i);
+                            
+                            if(totalAfter != null){
+                                totalSet[counter] = totalAfter[0].match(regexFloat)[0];
+                                console.log(totalSet[counter]);
+                                counter++;
+                            }
+                            
+                            // Get largest number from our results
+                            if(totalSet != null)
+                            {
+                                total =  Math.max.apply(null, totalSet)
+                            }
+
+                            // No possible totals found
+                            else
+                            {
+                                total = 0;
+                            }
+                            console.log(total);
+   
+
                             // Store locally for confirmation with user
                             if (typeof(Storage) !== "undefined") {
 
@@ -144,6 +197,7 @@ angular.module('starter.services', [])
                                     date = new Date();          
                                 }
                                 sessionStorage.setItem('rec.date', date);
+                                sessionStorage.setItem('rec.total', total);
                                 
                             // Can't store locally'
                             } else {

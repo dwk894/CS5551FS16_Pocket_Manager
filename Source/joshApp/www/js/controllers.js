@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 
 // Controller for the initial recording of an expense
-.controller('RecCtrl', function($scope, $state, $filter, $ionicPopup, PhotoService) {
+.controller('RecCtrl', function($scope, $state, $filter, $ionicPopup, PhotoService, PickerService) {
     
     // Get the date and put it in the form
      var stored_date = $filter("date")(new Date(), "yyyy-MM-dd");
@@ -47,6 +47,22 @@ angular.module('starter.controllers', [])
     // Capture expense via photo of receipt
     $scope.goPhoto = function(){
         PhotoService.takePicture().success(function(data) {
+            // It worked head to the homepage
+            console.log(data);
+            $state.go('confirm');
+
+        }).error(function(data) {
+            // Wrong stuff, try again
+            var alertPopup = $ionicPopup.alert({
+                title: 'Error!',
+                template: data
+        });
+    });
+    }  
+
+      // Capture expense via photo of receipt
+    $scope.goPick = function(){
+        PickerService.pickPicture().success(function(data) {
             // It worked head to the homepage
             console.log(data);
             $state.go('confirm');
@@ -157,9 +173,11 @@ angular.module('starter.controllers', [])
         console.log('Error: ' + JSON.stringify(error));    // In case of error
     });
 };  
-    $scope.test = function(){
-        var text = "THE MIXX\nHAWTHORNE\n913-338-4000\n11942 Roe Ave\nLeawood, KS 66209\nCheck Tab Cashier Time\nDate\n340849 3530 1111\n6:18:30 PM 1/2/2016\nSalad Wrap\n8.95\nHealthNut\n10.99\nFood Sub-Total\n19.94\nFountain Ice T\n2.20\nBeverage Sub-Total\n2.20\n22.14\nSUB TOTAL\n2.18\nSales" +  "Tax\n24.32\nTOTAL\nReceipt Used: Master Card\nThank You!\nVisit Us at mixxingitup.com\nSend Feedback to info@mixxingitup.com\n";
+    $scope.Test = function(){
+        var text = "THE MIXX\nHAWTHORNE\n913-338-4000\n11942 Roe Ave\nLeawood, KS 66209\nCheck Tab Cashier Time\nDate\n340849 3530 1111\n6:18:30 PM 1/2/2016\nSalad Wrap\n8.95\nHealth Nut\n10.99\nFood Sub-Total\n19.94\nFountain Ice T\n2.20\nBeverage Sub-Total\n2.20\n22.14\nSUB TOTAL\n2.18\nSa"
+ + "les Tax\n24,32\nTOTAL\nReceipt Used: Master Card\nThank You!\nVisit Us at mixxingitup.com\nSend Feedback to info@mixxingitup.com\n";
 
+    text = text.replace(/,/g,".");
     
     // Get date
     var date;
@@ -168,10 +186,10 @@ angular.module('starter.controllers', [])
       var oneone = text.match(/\d{1}\/\d{1}\/\d{4}/);
       var onetwo = text.match(/\d{1}\/\d{2}\/\d{4}/);
       var twoone = text.match(/\d{2}\/\d{1}\/\d{4}/);
-      console.log(twotwo);
-       console.log(twoone);
-        console.log(onetwo);
-         console.log(oneone);
+      //console.log(twotwo);
+       //console.log(twoone);
+        //console.log(onetwo);
+         //console.log(oneone);
     
     
     if(twotwo != null){
@@ -208,8 +226,42 @@ angular.module('starter.controllers', [])
     vendor = vendor.replace('WELCOME TO','').trim();
     console.log(vendor);
 
+    // Get total price
+   var regex = /[+-]?\d+(\.\d+)?/g;
+   var totalSet = [];
+   var total;
+    var totalBefore = text.match(/((.*\n){1})TOTAL/i);
+    var counter = 0;
+    if(totalBefore != null){
+         totalSet[counter] = totalBefore[0].match(regex)[0];
+          console.log(totalSet[counter]);
+          counter++
+    }
+    var totalAfterSemi = text.match(/TOTAL:((\n.*){1})/i);
+   
+    if(totalAfter != null){
+        totalSet[counter] = totalAfterSemi[0].match(regex)[0];
+        console.log(totalSet[counter]);
+        counter++;
+    }
 
+     var totalAfter = text.match(/TOTAL((\n.*){1})/i);
+   
+    if(totalAfter != null){
+        totalSet[counter] = totalAfter[0].match(regex)[0];
+        console.log(totalSet[counter]);
+        counter++;
+    }
 
+    if(totalSet != null)
+    {
+       total =  Math.max.apply(null, totalSet)
+    }
+    else{
+        total = 0;
+    }
+    console.log(total);
+   
 
     };
 
