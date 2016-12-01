@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 
 // Controller for the initial recording of an expense
-.controller('RecCtrl', function($scope, $state, $filter, $ionicPopup, PhotoService, PickerService) {
+.controller('RecCtrl', function($scope, $state, $filter, $ionicPopup, PhotoService) {
     
     // Get the date and put it in the form
      var stored_date = $filter("date")(new Date(), "yyyy-MM-dd");

@@ -80,7 +80,7 @@ angular.module('starter.services', [])
 
                             // Filter out common Google Vision error of placing commas in dollar amounts
                             text = text.replace(/,/g,".");
-                            console.log(text);
+                           //alert(text);
 
                             // Get date
                             var date;
@@ -197,7 +197,7 @@ angular.module('starter.services', [])
                                     date = new Date();          
                                 }
                                 sessionStorage.setItem('rec.date', date);
-                                sessionStorage.setItem('rec.total', total);
+                                sessionStorage.setItem('rec.amount', total);
                                 
                             // Can't store locally'
                             } else {
