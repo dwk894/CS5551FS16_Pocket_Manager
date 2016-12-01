@@ -80,16 +80,22 @@ angular.module('starter.services', [])
 
                             // Filter out common Google Vision error of placing commas in dollar amounts
                             text = text.replace(/,/g,".");
-                           //alert(text);
+                            console.log(text);
 
                             // Get date
                             var date;
 
-                            // Parse the date in with two and one digit day and month
+                            // Parse the date with slashes in with two and one digit day and month
                             var twotwo = text.match(/\d{2}\/\d{2}\/\d{4}/);
                             var oneone = text.match(/\d{1}\/\d{1}\/\d{4}/);
                             var onetwo = text.match(/\d{1}\/\d{2}\/\d{4}/);
                             var twoone = text.match(/\d{2}\/\d{1}\/\d{4}/);
+                          
+                            // Parse date with dashes instead of slashes
+                            twotwo = text.match(/\d{2}\-\d{2}\-\d{4}/);
+                            oneone = text.match(/\d{1}\-\d{1}\-\d{4}/);
+                            onetwo = text.match(/\d{1}\-\d{2}\-\d{4}/);
+                            twoone = text.match(/\d{2}\-\d{1}\-\d{4}/);
                             console.log(twotwo);
                             console.log(twoone);
                             console.log(onetwo);
@@ -148,15 +154,34 @@ angular.module('starter.services', [])
                             var totalBefore = text.match(/((.*\n){1})TOTAL/i);
                          
                             if(totalBefore != null){
-                                totalSet[counter] = totalBefore[0].match(regexFloat)[0];
+                                totalSet[counter] = totalBefore[0].match(regexFloat);
                                 console.log(totalSet[counter]);
                                 counter++
                             }
+
+                            // Find number before the word Amount Paid
+                            var amountBefore = text.match(/((.*\n){1})Amount Paid/i);
+                         
+                            if(amountBefore != null){
+                                totalSet[counter] = amountBefore[0].match(regexFloat);
+                                console.log(totalSet[counter]);
+                                counter++
+                            }
+
+                            // Get line after word Amount Paid
+                            var amountAfter = text.match(/AMOUNT PAID((\n.*){1})/i);
+                        
+                           if(totalAfter != null){
+                                totalSet[counter] = amountAfter[0].match(regexFloat);
+                                console.log(totalSet[counter]);
+                                counter++;
+                            }
+
                             // Get line after word Total:
                             var totalAfterSemi = text.match(/TOTAL:((\n.*){1})/i);
                         
                            if(totalAfter != null){
-                                totalSet[counter] = totalAfterSemi[0].match(regexFloat)[0];
+                                totalSet[counter] = totalAfterSemi[0].match(regexFloat);
                                 console.log(totalSet[counter]);
                                 counter++;
                             }
@@ -165,7 +190,7 @@ angular.module('starter.services', [])
                             var totalAfter = text.match(/TOTAL((\n.*){1})/i);
                             
                             if(totalAfter != null){
-                                totalSet[counter] = totalAfter[0].match(regexFloat)[0];
+                                totalSet[counter] = totalAfter[0].match(regexFloat);
                                 console.log(totalSet[counter]);
                                 counter++;
                             }
