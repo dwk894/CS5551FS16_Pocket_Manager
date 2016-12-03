@@ -41,14 +41,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         
       
     })
-  
-   .state('photo', {
-      url: '/photo',
-          templateUrl: 'templates/photo.html',
-          controller: 'PhotoCtrl'
-        
-      
-    })
+ 
 
   // setup an abstract state for the tabs directive
     .state('tab', {

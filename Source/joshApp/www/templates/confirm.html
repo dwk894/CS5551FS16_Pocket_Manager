@@ -9,9 +9,14 @@ Page to record an expense
             <ion-list>
                </br></br>
                <!-- Category -->
-                <label class="item item-input">
-                    <span class="input-label">Category</span></br>
-                    <input name="category" type="text"  ng-model="category" ng-class="{ 'has-errors' : conFrom.category.$invalid, 'no-errors' : conFrom.category.$valid}" required>
+                <label class="item item-input item-select">
+                   <span class="input-label" >Category</span></br>
+                    <select name="category" ng-model="category">
+                     <option selected >Entertainment</option>
+                    <option>Food</option>
+                    <option>Living</option>
+                    <option>Saving</option>
+                    </select>
                 </label>
                   <!-- Error Message -->
                  <span class="error" ng-show="conForm.category.$touched && conForm.category.$error.required"><i class="ion-information-circled"></i> Category is Required!</span>
