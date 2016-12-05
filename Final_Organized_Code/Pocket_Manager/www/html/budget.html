@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+     <head>
+         <meta charset = "utf-8">
+         <meta name = "viewport" content = "initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+         <title></title> <!-- No title for Android app. -->
+         <link rel = "manifest" href = "manifest.json">
+         <link href = "../lib/ionic/css/ionic.css" rel = "stylesheet">
+         <link href = "../css/style.css" rel = "stylesheet">
+         <!-- jQuery -->
+         <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+         <!-- Ionic/AngularJS -->
+         <script src = "../lib/ionic/js/ionic.bundle.js"></script>
+         <!-- Highcharts -->
+         <script src = "https://code.highcharts.com/highcharts.js"></script>
+         <script src = "https://code.highcharts.com/modules/exporting.js"></script>
+         <!-- Cordova script (this will be an Error 404 during development.) -->
+         <script src = "../cordova.js"></script>
+         <!-- Main engine of the Pocket Manager system -->
+         <script src = "../js/app.js"></script>
+         <script src = '../js/budget.js'></script>
+    </head>
+    <body ng-app = 'register'>
+        <ion-pane>
+            <ion-side-menus>
+                <ion-side-menu side = 'left' id = 'sideMenu'>
+                    <div class = 'list'>
+                        <div class = "button-bar" style = "width: calc(100% - 10px); margin-left: 5px;">
+                            <a class = "button icon-left ion-log-in button-assertive">Sign In</a>
+                            <a class = "button icon-left ion-android-create button-balanced" id = "sideItem_1" style = 'opacity: 0.5;'>Sign Up</a>
+                        </div>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_2' style = 'opacity: 0.5;'>
+                            <i class = 'icon ion-compose'></i>
+                            Create Monthly Budgets
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_3'>
+                            <i class = 'icon ion-android-search'></i>
+                            Search Wanted Items
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_4'>
+                            <i class = 'icon ion-card'></i>
+                            Record Expenses
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_5'>
+                            <i class = 'icon ion-clipboard'></i>
+                            Expense History
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_6'>
+                            <i class = 'icon ion-arrow-graph-up-right'></i>
+                            Expense Report
+                        </a>
+                        <a class = 'item item-icon-left' href = '#' id = 'sideItem_7'>
+                            <i id = 'profile' class = 'icon ion-android-settings'></i>
+                            Account Profile
+                        </a>
+                    </div>
+                </ion-side-menu>
+                <ion-side-menu-content id = 'homePage'>
+                    <div class = 'bar bar-header bar-calm'>
+                        <button menu-toggle = 'left' class = 'button button-icon icon ion-navicon'> Menu</button>
+                    </div>
+                    <p align = 'center' class = 'pageTitle'>Generate Monthly Budget</p>
+                    
+                    <!-- Confirm monthly income. -->
+                    <table style = 'color: darkred; font-size: 1.2em; width: calc(100% - 2em); margin-left: 1em;'>
+                        <tr>
+                            <td style = 'color: red; vertical-align: middle; width: 50%;' align = 'right'>Confirm your monthly net income (in USD):&#160&#160</td>
+                            <td style = 'vertical-align: middle; width: 15%;' align = 'left'>
+                                <input id = 'confirmIncome' type = 'text' style = 'width: 100%; font-size: 1.2em; color: red;'>
+                            </td>
+                            <td style = 'vertical-align: middle; width: 35%;' align = 'left'>
+                                &#160&#160
+                                <button class = "button button-small button-assertive" onclick = 'createBudget();'>Confirm/Update</button>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <!-- Result block -->
+                    <div>
+                        <p align = 'center' style = 'padding-bottom: 1em; padding-top: 2em; color: darkblue; font-size: 1.5em; text-decoration: underline;'>Budget Genered by Asymptotic Mathematical Fittings</p>
+                        <div id = 'budget' align = 'center'></div>
+                        <p id = 'textResult' style = 'padding-top: 1.5em; padding-bottom: 1em; text-decoration: underline; width: 100%; text-align: center; font-size: 1.5em; color: darkblue;'>Budget Details</p>
+                        <table id = 'textTable' style = 'text-align: center; margin: 1em; width: calc(100% - 2em); border-collapse: collapse; border: 2px solid darkblue;'>
+                            <tr style = 'border: 1px solid darkblue;'>
+                                <td style = 'border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'>Budget Peroid</td>
+                                <td id = 'budgetPeriod' style = 'font-weight: bold; border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'></td>
+                            </tr>
+                            <tr style = 'border: 1px solid darkblue;'>
+                                <td style = 'border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'>Food Budget</td>
+                                <td id = 'foodBudget' style = 'font-weight: bold; border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'></td>
+                            </tr>
+                            <tr style = 'border: 1px solid darkblue;'>
+                                <td style = 'border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'>Living Budget</td>
+                                <td id = 'livingBudget' style = 'font-weight: bold; border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'></td>
+                            </tr>
+                            <tr style = 'border: 1px solid darkblue;'>
+                                <td style = 'border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'>Entertainment Budget</td>
+                                <td id = 'entertainmentBudget' style = 'font-weight: bold; border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'></td>
+                            </tr>
+                            <tr style = 'border: 1px solid darkblue;'>
+                                <td style = 'border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'>Monthly Saving</td>
+                                <td id = 'monthlySaving' style = 'font-weight: bold; border: 1px solid darkblue; font-size: 1.2em; color: darkred; width: 50%; padding: 0.5em;'></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button class = 'button icon-left ion-home button-assertive' onclick = 'goHome();' style = 'width: 40%; position: fixed; bottom: 20px; left: 30%;'>Go to Home Page</button>
+                </ion-side-menu-content>
+            </ion-side-menus>
+        </ion-pane>
+    </body>
+</html>

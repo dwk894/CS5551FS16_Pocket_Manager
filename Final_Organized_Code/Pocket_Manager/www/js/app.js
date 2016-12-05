@@ -47,7 +47,7 @@ $(
                 navigator.camera.getPicture(
                     function(imageUri) {
                         $('#defaultPicture').replaceWith("<img id = 'defaultPicture' src = '" + imageUri + "' style = 'width: calc(100% - 10px); height: auto; margin: 5px;'>");
-                        localStorage.setItem('image', imageUri);
+                        sessionStorage.setItem('image', imageUri);
                     },
                     function(error) {
                         alert('Cannot open the device camera.  Please check your device.');
@@ -77,7 +77,7 @@ $(
                 navigator.camera.getPicture(
                     function(imageUri) {
                         $('#defaultPicture').replaceWith("<img id = 'defaultPicture' src = '" + imageUri + "' style = 'width: calc(100% - 10px); height: auto; margin: 5px;'>");
-                        localStorage.setItem('image',imageUri);
+                        sessionStorage.setItem('image',imageUri);
                     },
                     function(error) {
                         //alert('Cannot open the Gallery.  Please check your device.');
@@ -255,6 +255,17 @@ $(
                 }
                 
                 if (validate == true) {
+                    var login_info = {
+                        "_id": userName,
+                        "password": password,
+                        "hint": hint,
+                        "email": email,
+                        "name": fullName,
+                        "gender": gender,
+                        "degree": degree,
+                        "major": major,
+                        "income": income
+                    };
                     $.ajax(
                         {
                             url: "https://api.mlab.com/api/1/databases/pm/collections/pmUsers?apiKey=mwDHQOuAdZdk7Jj6kN7LUtt77QBcqfUC",
@@ -274,22 +285,15 @@ $(
                             type: "POST",
                             contentType: "application/json",
                             success: function(result) {
-                                alert(localStorage.getItem('image'));
-                                var imageUri = localStorage.getItem('image');
-                                //if (imageUri !== null) {
-                                    $.getJSON(
-                                        'http://uploads.im/api?upload=' + imageUri,
-                                        function(response) {
-                                            alert(response['data']['img_url']);
-                                        },
-                                        function(error) {
-                                            alert('error!');
-                                        }
-                                    );
-                                //}
+                                sessionStorage.setItem("logged_in", 'true');
+                                sessionStorage.setItem('username', login_info._id);
+                                sessionStorage.setItem('password', login_info.password);
+                                sessionStorage.setItem('email', login_info.email);
+                                sessionStorage.setItem('name', login_info.name);
+                                sessionStorage.setItem('income', login_info.income);
                                 
-                                localStorage.setItem("loggedIn", true);
                                 alert("You have logged in.");
+                                goHome();
                                 
                             },
                             error: function(error) {
@@ -303,3 +307,7 @@ $(
         );
     }
 );
+
+function goHome() {
+    window.location.href = '../index.html';
+}
