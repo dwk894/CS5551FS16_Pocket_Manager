@@ -114,7 +114,7 @@ function searchitem(){
 
                 // Get the eBay link of the item.
                 var ebayLink = response["findItemsByKeywordsResponse"][0]["searchResult"][0]["item"][0]["viewItemURL"];
-
+                
                 // Show result in the web page.
                 $("#result").replaceWith(
                     "<div id='result'><p class='resultTitle'>Item information</p><table style='margin:0px auto;'><tr><td style='vertical-align:top;'><img src='"
@@ -123,13 +123,12 @@ function searchitem(){
                     + name +
                     "<br><br><b>Price:</b> <b style='color:red;'>$"
                     + price +
-                    "</b><br><br><a style='color:black;'><b>item link:</b></a><a href='"
-                    + ebayLink +
-                    "' target='_blank'>"
-                    + ebayLink +
+                    "</b><br><br><a style='color:black;'><b>Item eBay Link:&#160&#160</b></a>" + 
+                    "<a href = '" + ebayLink[0] + "'>"
+                    + ebayLink[0] +
                     "</a></p></td></tr></table><center><br><input type='button' id='suggest_button' name='suggest_button' onclick='getsuggest();' value='Get suggestion'> </center></div>"
                 );
-               
+                
   if( price < 40 ){
     
     var decision = "you can buy it, if you really want it.";
@@ -193,6 +192,3 @@ function getsuggest(){
   d.style.visibility = 'visible';
    s.style.visibility = 'visible';
 }
-
-
-

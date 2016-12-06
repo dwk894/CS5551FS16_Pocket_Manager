@@ -1,10 +1,5 @@
 $(document).ready(
     function() {
-        
-        //Test use
-        sessionStorage.setItem('logged_in', true);
-        sessionStorage.setItem('income', 984);
-        
         if (sessionStorage.getItem('logged_in') !== 'true') {
             alert('You must log in first.');
             goHome();
@@ -67,16 +62,16 @@ function createBudget() {
                 colorByPoint: true,
                 data: [{
                     name: 'Food',
-                    y: 56.33
+                    y: parseFloat(food_budget)
                 }, {
                     name: 'Living',
-                    y: 24.03,
+                    y: parseFloat(living_budget)
                 }, {
                     name: 'Entertainment',
-                    y: 10.38
+                    y: parseFloat(entertainment_budget)
                 }, {
                     name: 'Saving',
-                    y: 4.77,
+                    y: parseFloat(saving),
                     sliced: true,
                     selected: true
                 }]
