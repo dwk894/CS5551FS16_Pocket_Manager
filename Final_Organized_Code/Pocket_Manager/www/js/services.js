@@ -238,14 +238,14 @@ angular.module('starter.services', [])
 
                            
                       }, function(err){
-                        deferred.reject('Error 1 - An error occurred while uploading the file');
+                        deferred.reject('Error 3 - An error occurred while uploading the file');
                       });
                 }, function(err){
-                    deferred.reject('Error 2 - An error occurred while trying to write the file');
+                    deferred.reject('Error 4 - An error occurred while trying to write the file');
                 });
 
             }, function(err){
-              deferred.reject('Error 3 - An error occurred getting the picture from the camera');
+              deferred.reject('Error 5 - An error occurred getting the picture from the camera');
             });
 
             // Worked
